@@ -61,3 +61,5 @@ p,li,h1,h2,h3,a,td{overflow-wrap:anywhere}.btn{max-width:100%}
 .newsletter h4{margin:0 0 6px}
 .newsletter p{margin:0 0 12px}
 .newsletter a{text-decoration:underline}
+.cols{gap:32px 32px}.cols .newsletter{margin:0 0 0 auto;flex:0 1 330px;min-width:290px}.cols .newsletter iframe{width:100%}
+@media(max-width:820px){.cols .newsletter{margin:0;flex:1 1 100%}}
