@@ -1,0 +1,16 @@
+# YieldGuard
+
+> YieldGuard (yieldguard.health) provides hospital price transparency compliance: automated auditing and remediation of CMS machine-readable files under 45 CFR Part 180.
+
+## Pages
+- [Yield Guard Health - Hospital Price Transparency Compliance](https://yieldguard.health/): Automated auditing and remediation for 45 CFR Part 180: price transparency compliance for hospitals.
+- [Yield Guard Health - Managed Compliance Capabilities | Hospital Price Transparency](https://yieldguard.health/features): Managed CMS price transparency compliance capabilities: code resolution, continuous monitoring and an audit-ready evidence locker.
+- [Yield Guard Health - Hospital Price Transparency Compliance | Pricing & Plans](https://yieldguard.health/pricing): Pricing and plans for hospital price transparency compliance, from community hospitals to enterprise health systems.
+- [Yield Guard Health - Hospital Price Transparency Compliance | About Our Mission & Team](https://yieldguard.health/about): About Yield Guard Health: our mission, team and beliefs.
+- [Yield Guard Health - Hospital Price Transparency Compliance | Careers & Founding Team Roles](https://yieldguard.health/careers): Join the Yield Guard Health founding team. Remote-first, mission-driven.
+- [Yield Guard Health - Hospital Price Transparency Compliance | Contact & Support](https://yieldguard.health/contact): Contact Yield Guard Health for price transparency compliance support.
+- [Yield Guard Health - MRF & Compliance Glossary](https://yieldguard.health/mrf-compliance-glossary): Glossary of CMS hospital price transparency, MRF, regulatory, data quality and payer terms.
+- [Mandate Tracker (Beta)](https://yieldguard.health/mandate-tracker): Waitlist for monthly compliance alerts and schema updates.
+- [2026 CMS hospital price transparency requirements](https://yieldguard.health/learn/hospital-price-transparency-2026-requirements): Sourced to CMS, reviewed October 5, 2026.
+- [How to check your hospital machine-readable file](https://yieldguard.health/learn/how-to-check-your-hospital-mrf): Sourced to CMS, reviewed October 5, 2026.
+- [The 2026 machine-readable file gap types](https://yieldguard.health/learn/mrf-gap-types-2026): Sourced to CMS, reviewed October 5, 2026.
