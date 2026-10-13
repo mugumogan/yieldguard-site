@@ -5,4 +5,4 @@ Proposed documentation note, not a production validator. Preserve negotiated cha
 https://yieldguard.health/learn/zero-count-with-median/
 
 CMS FAQ: https://www.cms.gov/files/document/hospital-price-transparency-frequently-asked-questions.pdf
-CMS documentation: https://github.com/CMSgov/hospital-price-transparency/blob/master/documentation/JSON/README.mdeld
+CMS documentation: https://github.com/CMSgov/hospital-price-transparency/blob/master/documentation/JSON/README.md
