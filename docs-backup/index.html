@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-US" class="min-h-screen scroll-pt-28" x-data :class="{'overflow-hidden' : $store.navIsOpen.on}" x-on:keydown.meta.k.window="search.init();">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="zZlKu72d28ZJ4rH08yomEr3dWgpNqFjhKjBioeNy">
+
+<script>
+    var defaultMode = 'dark';
+    if ((!('theme' in localStorage) && defaultMode == 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');localStorage.setItem('theme', 'dark')}
+    if ((!('theme' in localStorage) && defaultMode == defaultMode)){document.documentElement.classList.add(defaultMode)
+    if (defaultMode == 'light'){document.documentElement.classList.remove('dark')}localStorage.setItem('theme', defaultMode)}
+    if (localStorage.theme === 'dark'){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}
+</script>
+
+
+<link rel="stylesheet" href="/print.css?2025061222" media="print">
+
+                        <meta name="robots" content="index,follow,archive" />
+            
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+<title>Yield Guard</title>
+<meta name="description" content="Authoritative CMS Hospital Price Transparency documentation covering regulatory law (45 CFR Part 180, CMS v2.0, modifier mandates, CMP enforcement), techni...">
+<meta name="keywords" content="">
+<meta property="og:title" content="Yield Guard">
+<meta property="og:description" content="Authoritative CMS Hospital Price Transparency documentation covering regulatory law (45 CFR Part 180, CMS v2.0, modifier mandates, CMP enforcement), techni...">
+
+
+<link rel="canonical" href="https://docs.yieldguard.health">
+
+<link rel="preload" as="style" href="https://docs.yieldguard.health/build/assets/theme-docs-B-1hQ8Vz.css" /><link rel="stylesheet" href="https://docs.yieldguard.health/build/assets/theme-docs-B-1hQ8Vz.css" data-navigate-track="reload" />
+<style>
+    .hero {
+        background-color: #786AFF;
+    }
+    .hero h1 {
+        color: #ffffff;
+    }
+    .article__view .hero p,
+    .category__view .hero p {
+        color: #ffffff;
+    }
+    .topics a:hover h3 {
+        color: #786AFF;
+    }
+    .category__box h3 a:hover {
+        color: #786AFF;
+    }
+    .popular__list a:hover strong {
+        color: #786AFF;
+    }
+    .highlights a:hover span {
+        color: #786AFF;
+    }
+    .articles__list a:hover h3 {
+        color: #786AFF;
+    }
+    .btn {
+        background-color: #786AFF;
+        color: #ffffff;
+    }
+    .font__icon i,
+    .font__icon svg {
+        color: #818a97;
+    }
+    .toggle__docsnav span {
+        background-color: #786AFF;
+    }
+    ul.related a:hover,
+    ul.documents a:hover {
+        color: #786AFF;
+        border-color: #786AFF;
+    }
+    .nav__bar ul.lvl1 a.act {
+        color: #786AFF;
+    }
+    .nav__bar ul.lvl1 a.act::before {
+        display: block;
+        background-color: #786AFF;
+    }
+    .content article p a,
+    .content article li a {
+        color: #786AFF;
+    }
+    .toc a.is-active-link {
+        color: #786AFF;
+    }
+    .ais-Hits-item a:hover {
+        color: #786AFF;
+    }
+    .base__description a[href*="//"]:not([href*="https://docs.yieldguard.health"]),
+    article a[href*="//"]:not([href*="https://docs.yieldguard.health"]) {
+        padding-left: 16px;
+        position: relative;
+    }
+    .base__description a[href*="//"]:not([href*="https://docs.yieldguard.health"]):hover::before,
+    article a[href*="//"]:not([href*="https://docs.yieldguard.health"]):hover::before {
+        opacity: 1;
+    }
+    .base__description a[href*="//"]:not([href*="https://docs.yieldguard.health"])::before,
+    article a[href*="//"]:not([href*="https://docs.yieldguard.health"])::before {
+        content: '';
+        width: 12px; height: 12px;
+        position: absolute;
+        top: 4px; left: 0;
+        opacity: 0.5;
+        transition: opacity 200ms ease-in-out;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>');
+    }
+    .dark .base__description a[href*="//"]:not([href*="https://docs.yieldguard.health"])::before,
+    .dark article a[href*="//"]:not([href*="https://docs.yieldguard.health"])::before {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>');
+    }
+    article a.file-download-block::before {
+        display: none !important;
+    }
+    .dark .hero {
+        background-color: #1c1917;
+    }
+    .dark .hero h1 {
+        color: #ffffff;
+    }
+    .dark .article__view .hero p,
+    .dark .category__view .hero p {
+        color: #ffffff;
+    }
+    .dark .topics a:hover h3 {
+        color: #8d9de0;
+    }
+    .dark .category__box h3 a:hover {
+        color: #8d9de0;
+    }
+    .dark .popular__list a:hover strong {
+        color: #8d9de0;
+    }
+    .dark .btn {
+        background-color: #8d9de0;
+        color: #ffffff;
+    }
+    .dark .font__icon i,
+    .dark .font__icon svg {
+        color: #757a80;
+    }
+    .dark .toggle__docsnav span {
+        background-color: #8d9de0;
+    }
+    .dark ul.related a:hover,
+    .dark ul.documents a:hover {
+        color: #8d9de0;
+        border-color: #8d9de0;
+    }
+    .dark .nav__bar ul.lvl1 a.act {
+        color: #8d9de0;
+    }
+    .dark .nav__bar ul.lvl1 a.act::before {
+        display: block;
+        background-color: #8d9de0;
+    }
+    .dark .content article p a,
+    .dark .content article li a {
+        color: #8d9de0;
+    }
+    .dark .toc a.is-active-link {
+        color: #8d9de0;
+    }
+    .dark .ais-Hits-item a:hover {
+        color: #8d9de0;
+    }
+    .dark .articles__list a:hover h3 {
+        color: #8d9de0;
+    }
+    .dark .highlights a:hover span {
+        color: #8d9de0;
+    }
+</style>
+
+
+
+<!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak="x-cloak"],[x-cloak=""] {display: none !important;}[wire\:cloak="wire:cloak"],[wire\:cloak=""] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style></head>
+<body class="home__view line-numbers min-h-screen theme__docs bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-300 " @keyup.escape="search.close();">
+    <header class="docs_topbar fixed top-0 left-0 w-full z-40 flex flex-wrap items-center justify-between bg-white px-5 py-5 shadow-md shadow-stone-900/5 dark:shadow-none lg:px-8 dark:bg-stone-900/95 dark:backdrop-blur-sm dark:border-b dark:border-stone-800">
+    <div class="logo lg:flex-1">
+        <div class="flex">
+                            <a href="https://docs.yieldguard.health">Yield Guard</a>
+                    </div>
+    </div>
+
+    <div class="hidden lg:flex lg:gap-x-2 lg:justify-end noprint">
+        <button x-on:click="search.init();" type="button" class="hidden group transition-colors bg-stone-50 border border-stone-200 hover:border-stone-300 dark:border-stone-600/50 dark:bg-stone-700/20 dark:hover:border-stone-600/90 w-56 lg:flex items-center justify-center sm:justify-start lg:h-auto lg:flex-none lg:rounded-lg lg:py-2 lg:pl-2.5 lg:pr-3.5 lg:text-sm">
+            <svg aria-hidden="true" viewBox="0 0 20 20" class="size-4 flex-none fill-stone-400 group-hover:fill-stone-500 dark:fill-stone-500 dark:group-hover:fill-stone-500 md:group-hover:fill-stone-400">
+                <path d="M16.293 17.707a1 1 0 0 0 1.414-1.414l-1.414 1.414ZM9 14a5 5 0 0 1-5-5H2a7 7 0 0 0 7 7v-2ZM4 9a5 5 0 0 1 5-5V2a7 7 0 0 0-7 7h2Zm5-5a5 5 0 0 1 5 5h2a7 7 0 0 0-7-7v2Zm8.707 12.293-3.757-3.757-1.414 1.414 3.757 3.757 1.414-1.414ZM14 9a4.98 4.98 0 0 1-1.464 3.536l1.414 1.414A6.98 6.98 0 0 0 16 9h-2Zm-1.464 3.536A4.98 4.98 0 0 1 9 14v2a6.98 6.98 0 0 0 4.95-2.05l-1.414-1.414Z"></path>
+            </svg>
+            
+            <span class="lg:ml-2 lg:text-stone-500 lg:dark:text-stone-400 hidden lg:block">Search articles ...</span>
+        </button>
+
+            </div>
+
+    <div class="relative flex items-center justify-end noprint">
+        
+        <div class="pr-5 border-r border-stone-300 dark:border-stone-700 sm:pr-8 lg:hidden">
+            <span class="text-stone-500 hover:text-stone-900 dark:text-stone-300 dark:hover:text-white cursor-pointer" @click="$store.navIsOpen.toggle()">
+                <svg class="size-5 transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12.535714285714286 1.8571428571428572H0.4642857142857143" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12.535714285714286 6.5H0.4642857142857143" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12.535714285714286 11.142857142857142H0.4642857142857143" stroke-width="1"></path>
+                </svg>
+            </span>
+        </div>
+
+        <div class="mx-5 sm:mx-8 lg:mr-0 lg:hidden">
+            <span x-on:click="search.init();" class="text-stone-500 hover:text-stone-900 dark:text-stone-300 dark:hover:text-white cursor-pointer">
+                <svg class="size-5 transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M5.571428571428571 10.678571428571429c2.8206007142857143 0 5.107142857142858 -2.286542142857143 5.107142857142858 -5.107142857142858S8.392029285714287 0.4642857142857143 5.571428571428571 0.4642857142857143 0.4642857142857143 2.7508278571428573 0.4642857142857143 5.571428571428571s2.286542142857143 5.107142857142858 5.107142857142858 5.107142857142858Z" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12.535714285714286 12.535714285714286 9.285714285714286 9.285714285714286" stroke-width="1"></path>
+                </svg>
+            </span>
+        </div>
+
+        <div x-data class="relative pl-5 sm:pl-8 sm:pr-5 border-l border-stone-300 z-10 dark:border-stone-700 lg:pr-0 lg:ml-8">
+            <span class="block dark:hidden text-stone-500 hover:text-stone-900 cursor-pointer" @click="localStorage.setItem('theme', 'dark');document.documentElement.classList.add('dark');">
+                <svg class="size-5 lg:size-4 transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M11.142857142857142 9.731428571428571c-1.0787214285714286 -0.006592857142857143 -2.136215714285714 -0.29992857142857143 -3.064155714285714 -0.8499864285714286 -0.9279307142857144 -0.5500392857142857 -1.6928878571428572 -1.3369664285714287 -2.216435 -2.2801071428571427 -0.5235378571428572 -0.9431314285714285 -0.7868342857142857 -2.008537142857143 -0.7628864285714286 -3.08698 0.023947857142857146 -1.0784335714285713 0.3342857142857143 -2.131108571428572 0.8991821428571429 -3.0500692857142857 -1.4883328571428571 0.2612832857142857 -2.826107142857143 1.0672442857142859 -3.752728571428572 2.2608857142857146 -0.9266214285714286 1.1936414285714287 -1.3757296428571428 2.689477142857143 -1.25983 4.196121428571429 0.11589500000000001 1.5066442857142859 0.7884871428571429 2.9161785714285715 1.8867642857142857 3.954042857142858 1.098277142857143 1.0379571428571428 2.5435800000000004 1.6298285714285716 4.054365714285715 1.6603785714285715 1.0336207142857143 0.0026 2.0503785714285714 -0.26185714285714284 2.951659285714286 -0.7678357142857143 0.9013642857142857 -0.5059785714285715 1.6566642857142857 -1.2362071428571428 2.1926357142857142 -2.120021428571429 -0.3070785714285714 0.0507 -0.6174071428571429 0.07865 -0.9285714285714286 0.08357142857142857v0Z" stroke-width="1"></path>
+                </svg>
+            </span>
+            <span class="hidden dark:block text-stone-500 hover:text-stone-900 cursor-pointer dark:text-stone-300 dark:hover:text-white" @click="localStorage.setItem('theme', 'light');document.documentElement.classList.remove('dark');">
+                <svg class="size-5 lg:size-4 transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M6.5 9.517857142857142c1.6667207142857143 0 3.017857142857143 -1.3511364285714287 3.017857142857143 -3.017857142857143S8.166720714285715 3.482142857142857 6.5 3.482142857142857 3.482142857142857 4.833279285714286 3.482142857142857 6.5 4.833279285714286 9.517857142857142 6.5 9.517857142857142Z" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M6.5 0.4642857142857143v0.9285714285714286" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M6.5 11.607142857142858v0.9285714285714286" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12.535714285714286 6.5h-0.9285714285714286" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M1.3928571428571428 6.5h-0.9285714285714286" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m10.771428571428572 2.2285714285714286 -0.6592857142857143 0.6592857142857143" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m2.8878757142857143 10.112142857142858 -0.6592857142857143 0.6592857142857143" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m10.771428571428572 10.771428571428572 -0.6592857142857143 -0.6592857142857143" stroke-width="1"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m2.8878757142857143 2.887857142857143 -0.6592857142857143 -0.6592857142857143" stroke-width="1"></path>
+                </svg>
+            </span>
+        </div>
+
+            </div>
+
+    </header>
+<div class="flex flex-col">
+    <div class="flex-1">
+        <div class="max-w-[1420px] mx-auto px-5">
+            
+            <div id="navigation" class="scrollbar-hide flex flex-col -translate-x-[320px] transition z-50 py-10 bg-white dark:bg-stone-950 px-8 fixed top-0 left-0 lg:px-8 lg:z-30 lg:top-[80px] bottom-0 overflow-y-auto lg:bg-transparent! w-[320px] lg:translate-x-0 lg:border-r lg:border-r-stone-200 lg:dark:border-r-stone-800" :class="{'translate-x-0!' : $store.navIsOpen.on}">
+                <nav 
+    x-data="{
+        selected: null,
+        init() {
+            this.selected = parseInt(document.getElementById('act')?.closest('.category-item')?.dataset.index);
+        }
+    }" 
+    class="nav__bar flex-1 relative text-sm collapse__nav"
+>
+    <div class="flex items-start mb-10 lg:hidden">
+        <div class="flex-1 pr-5 flex">
+                    </div>
+
+        <span class="cursor-pointer" @click="$store.navIsOpen.toggle()">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Delete-1--Streamline-Core.svg"><g id="Delete-1--Streamline-Core.svg"><path id="Vector" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" d="m12.5 1.5 -11 11" stroke-width="1"></path><path id="Vector_2" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" d="m1.5 1.5 11 11" stroke-width="1"></path></g></svg>
+        </span>
+    </div>
+
+                                            <ul class="lvl0 mb-8 last:mb-0" data-id="2941aebd-1690-44e5-8f21-0b87feffdb3a">
+                    <li class="category-item" data-index="0">
+                        <div class="categoryToggle flex items-start text-base mb-1 cursor-pointer">
+                            <a href="/legal" class="block flex-1 pr-5">
+                                <div class="flex items-start space-x-2.5">
+                                                                        <strong class="text-stone-950 dark:text-stone-50">CMS Hospital Price Transparency Rules</strong>
+                                </div>
+                            </a>
+
+                            <span class="bg-stone-200/50 dark:bg-stone-800 p-1.5 rounded-sm cursor-pointer translate-y-0.5" @click="selected !== 0 ? selected = 0 : selected = null">
+                                <svg x-show="selected !== 0" class="w-3 h-3 transition duration-300 -rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m0.4642857142857143 9.424907142857144 5.710714285714286 -5.710705c0.04168357142857143 -0.04441357142857143 0.0920307142857143 -0.07982 0.1479307142857143 -0.10401857142857143 0.05589071428571429 -0.02419857142857143 0.11615500000000001 -0.03667857142857143 0.1770692857142857 -0.03667857142857143 0.06091428571428572 0 0.12117857142857144 0.012480000000000002 0.1770692857142857 0.03667857142857143 0.0559 0.02419857142857143 0.10624714285714286 0.059605 0.1479307142857143 0.10401857142857143l5.710714285714286 5.710705" stroke-width="1"></path>
+                                </svg>
+                                
+                                <svg x-show="selected == 0" class="w-3 h-3 transition duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14" style="display: none;">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m0.4642857142857143 9.424907142857144 5.710714285714286 -5.710705c0.04168357142857143 -0.04441357142857143 0.0920307142857143 -0.07982 0.1479307142857143 -0.10401857142857143 0.05589071428571429 -0.02419857142857143 0.11615500000000001 -0.03667857142857143 0.1770692857142857 -0.03667857142857143 0.06091428571428572 0 0.12117857142857144 0.012480000000000002 0.1770692857142857 0.03667857142857143 0.0559 0.02419857142857143 0.10624714285714286 0.059605 0.1479307142857143 0.10401857142857143l5.710714285714286 5.710705" stroke-width="1"></path>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <ul x-show="selected == 0" role="list" class="lvl1 -mx-1.5" :class="{'active': selected == 0}" style="display: none;">
+                                                                                        
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/hospital-price-transparency-legal-knowledge-hub">
+                                        <span>Hospital Price Transparency Legal Knowledge Hub</span>
+                                    </a>
+                                </li>
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/what-counts-as-standard-charges-under-cms-rules">
+                                        <span>What Counts as “Standard Charges” Under CMS Rules?</span>
+                                    </a>
+                                </li>
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/cms-v2-0-template-guide-technical-breakdown-of-the-new-mandatory-july-2024-standards">
+                                        <span>CMS v2.0 Template Guide: Technical breakdown of the new mandatory July 2024 standards</span>
+                                    </a>
+                                </li>
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/the-civil-monetary-penalty-cmp-scale-under-hospital-transparency-act-of-2025">
+                                        <span>The Civil Monetary Penalty (CMP) Scale under the CMS Hospital Price Transparency Rule (CMP Scale)</span>
+                                    </a>
+                                </li>
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/the-january-2025-modifier-mandate-why-hospitals-must-now-include-mod1-mod2-and-mod3">
+                                        <span>The January 2025 Modifier Mandate: Why hospitals must now include Mod1, Mod2, and Mod3</span>
+                                    </a>
+                                </li>
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/a-cms-audit-checklist-for-hospitals">
+                                        <span>A CMS Audit Checklist for Hospital Price Transparency</span>
+                                    </a>
+                                </li>
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/45-cfr-part-180-explained-a-deep-dive-into-the-specific-law-governing-price-transparency">
+                                        <span>45 CFR Part 180 Explained: A deep dive into the specific law governing Price Transparency.</span>
+                                    </a>
+                                </li>
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/machine-readable-file-mrf-requirements-what-makes-a-file-cms-compliant-vs-noncompliant">
+                                        <span>Hospital MRF Requirements and Validation</span>
+                                    </a>
+                                </li>
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/legal/federal-enforcement-timeline-a-history-of-cms-warning-letters-and-the-shift-from-good-faith-to-strict-compliance">
+                                        <span>Federal Enforcement Timeline: A history of CMS warning letters and the shift from &quot;Good Faith&quot; to &quot;Strict Compliance.&quot;</span>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </li>
+                </ul>
+                                                <ul class="lvl0 mb-8 last:mb-0" data-id="35e2554a-88a6-4638-8cef-29e493d4a1e5">
+                    <li class="category-item" data-index="1">
+                        <div class="categoryToggle flex items-start text-base mb-1 cursor-pointer">
+                            <a href="/glossary" class="block flex-1 pr-5">
+                                <div class="flex items-start space-x-2.5">
+                                                                        <strong class="text-stone-950 dark:text-stone-50">Glossary</strong>
+                                </div>
+                            </a>
+
+                            <span class="bg-stone-200/50 dark:bg-stone-800 p-1.5 rounded-sm cursor-pointer translate-y-0.5" @click="selected !== 1 ? selected = 1 : selected = null">
+                                <svg x-show="selected !== 1" class="w-3 h-3 transition duration-300 -rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m0.4642857142857143 9.424907142857144 5.710714285714286 -5.710705c0.04168357142857143 -0.04441357142857143 0.0920307142857143 -0.07982 0.1479307142857143 -0.10401857142857143 0.05589071428571429 -0.02419857142857143 0.11615500000000001 -0.03667857142857143 0.1770692857142857 -0.03667857142857143 0.06091428571428572 0 0.12117857142857144 0.012480000000000002 0.1770692857142857 0.03667857142857143 0.0559 0.02419857142857143 0.10624714285714286 0.059605 0.1479307142857143 0.10401857142857143l5.710714285714286 5.710705" stroke-width="1"></path>
+                                </svg>
+                                
+                                <svg x-show="selected == 1" class="w-3 h-3 transition duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14" style="display: none;">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m0.4642857142857143 9.424907142857144 5.710714285714286 -5.710705c0.04168357142857143 -0.04441357142857143 0.0920307142857143 -0.07982 0.1479307142857143 -0.10401857142857143 0.05589071428571429 -0.02419857142857143 0.11615500000000001 -0.03667857142857143 0.1770692857142857 -0.03667857142857143 0.06091428571428572 0 0.12117857142857144 0.012480000000000002 0.1770692857142857 0.03667857142857143 0.0559 0.02419857142857143 0.10624714285714286 0.059605 0.1479307142857143 0.10401857142857143l5.710714285714286 5.710705" stroke-width="1"></path>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <ul x-show="selected == 1" role="list" class="lvl1 -mx-1.5" :class="{'active': selected == 1}" style="display: none;">
+                                                                                        
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/glossary/the-complete-hospital-price-transparency-mrf-glossary">
+                                        <span>The Complete Hospital Price Transparency &amp; MRF Glossary</span>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </li>
+                </ul>
+                                                <ul class="lvl0 mb-8 last:mb-0" data-id="8a30086e-2c94-406c-858d-00c95f61aee2">
+                    <li class="category-item" data-index="2">
+                        <div class="categoryToggle flex items-start text-base mb-1 cursor-pointer">
+                            <a href="/strategy" class="block flex-1 pr-5">
+                                <div class="flex items-start space-x-2.5">
+                                                                        <strong class="text-stone-950 dark:text-stone-50">Strategy</strong>
+                                </div>
+                            </a>
+
+                            <span class="bg-stone-200/50 dark:bg-stone-800 p-1.5 rounded-sm cursor-pointer translate-y-0.5" @click="selected !== 2 ? selected = 2 : selected = null">
+                                <svg x-show="selected !== 2" class="w-3 h-3 transition duration-300 -rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m0.4642857142857143 9.424907142857144 5.710714285714286 -5.710705c0.04168357142857143 -0.04441357142857143 0.0920307142857143 -0.07982 0.1479307142857143 -0.10401857142857143 0.05589071428571429 -0.02419857142857143 0.11615500000000001 -0.03667857142857143 0.1770692857142857 -0.03667857142857143 0.06091428571428572 0 0.12117857142857144 0.012480000000000002 0.1770692857142857 0.03667857142857143 0.0559 0.02419857142857143 0.10624714285714286 0.059605 0.1479307142857143 0.10401857142857143l5.710714285714286 5.710705" stroke-width="1"></path>
+                                </svg>
+                                
+                                <svg x-show="selected == 2" class="w-3 h-3 transition duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14" style="display: none;">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m0.4642857142857143 9.424907142857144 5.710714285714286 -5.710705c0.04168357142857143 -0.04441357142857143 0.0920307142857143 -0.07982 0.1479307142857143 -0.10401857142857143 0.05589071428571429 -0.02419857142857143 0.11615500000000001 -0.03667857142857143 0.1770692857142857 -0.03667857142857143 0.06091428571428572 0 0.12117857142857144 0.012480000000000002 0.1770692857142857 0.03667857142857143 0.0559 0.02419857142857143 0.10624714285714286 0.059605 0.1479307142857143 0.10401857142857143l5.710714285714286 5.710705" stroke-width="1"></path>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <ul x-show="selected == 2" role="list" class="lvl1 -mx-1.5" :class="{'active': selected == 2}" style="display: none;">
+                                                                                        
+                                                            <li class="relative -ml-1" id="">
+                                    <a class="block w-full px-2.5 py-1.5 rounded-sm transition-colors hover:bg-stone-200 dark:hover:bg-stone-800" href="/strategy/hospital-price-transparency-audit-workflow">
+                                        <span>Hospital Price Transparency Audit Workflow</span>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </li>
+                </ul>
+                                                                </nav>
+
+
+<script>
+    const element = document.getElementById("act");
+
+    if (element) {
+        element.scrollIntoView({block: "center", inline: "nearest"});
+    }
+</script>            </div>
+
+            <div class="lg:pl-[320px] print:pl-0">
+                <div class="content flex flex-col min-h-screen">
+                    <div class="flex-1 flex flex-row">
+                        <div class="flex-1 min-w-0 xl:max-w-3xl">
+                            <div class="flex flex-col min-h-screen">
+                                <div class="flex-1 pb-10 pt-[100px] lg:pt-[120px]">
+                                        <article id="article">
+        <h1>Yield Guard</h1>
+        <p>Yield Guard provides automated data integrity audits for hospital finance teams to ensure 100% compliance with the complex new CMS v2.0 Price Transparency mandates. We shield your bottom line from $2M+ in civil monetary penalties by identifying "hidden" technical errors—like the CSV Trap and corrupted billing codes—before federal auditors find them.</p><p><strong>Hospital Price Transparency Documentation Wiki</strong></p><p>A complete legal, technical, and strategic reference for CMS Hospital Price Transparency compliance.</p><p>This Wiki is an authoritative, end-to-end documentation corpus explaining <strong>how hospital price transparency actually works in practice</strong>, how <a target="_blank" rel="noopener noreferrer nofollow" class="editor-link" href="chatgpt://generic-entity?number=0"><strong>Centers for Medicare &amp; Medicaid Services</strong></a><strong> enforces it</strong>, and why many hospitals fail despite “publishing prices.”</p><p><strong>Short answer:</strong> If CMS audits your hospital’s price transparency data, every test they run is documented somewhere in this Wiki.</p><h2><strong>How This Wiki Is Organized</strong></h2><p>CMS enforcement does not operate as a single rule or checklist. It operates as a <strong>stack</strong>: law → data definitions → failure modes → remediation.</p><p>This Wiki mirrors that structure and is divided into <strong>four connected hubs</strong>, each answering a different executive question.</p><h2><a target="_self" rel="noopener noreferrer nofollow" class="editor-link" href="/legal/hospital-price-transparency-legal-knowledge-hub"><strong>Legal Hub</strong></a><strong> — The Regulatory “Bible”</strong></h2><p><strong>Answers:</strong> <em>What is the law, and how is it enforced?</em></p><p>This <a target="_self" rel="noopener noreferrer nofollow" class="editor-link" href="/legal/hospital-price-transparency-legal-knowledge-hub">hub</a> explains the <strong>statutory authority, enforcement evolution, and financial penalties</strong> behind hospital price transparency. It is written for CFOs, compliance leaders, and legal teams who need to understand <strong>what CMS requires—not what hospitals assume is acceptable</strong>.</p><p>Includes:</p><ul><li><p><a target="_self" rel="noopener noreferrer nofollow" class="editor-link" href="/legal/45-cfr-part-180-explained-a-deep-dive-into-the-specific-law-governing-price-transparency"><strong>45 CFR Part 180 Explained: A deep dive into the specific law governing Price Transparency</strong></a></p></li><li><p><a target="_self" rel="noopener noreferrer nofollow" class="editor-link" href="/legal/cms-v2-0-template-guide-technical-breakdown-of-the-new-mandatory-july-2024-standards"><strong>CMS v2.0 Template Guide: Technical breakdown of the new mandatory July 2024 standards</strong></a></p></li><li><p><a target="_self" rel="noopener noreferrer nofollow" class="editor-link" href="/legal/the-january-2025-modifier-mandate-why-hospitals-must-now-include-mod1-mod2-and-mod3"><strong>The January 2025 Modifier Mandate: Why hospitals must now include Mod1, Mod2, and Mod3</strong></a></p></li><li><p><a target="_self" rel="noopener noreferrer nofollow" class="editor-link" href="/legal/the-civil-monetary-penalty-cmp-scale-under-hospital-transparency-act-of-2025"><strong>Civil Monetary Penalty (CMP) Scale: A table showing how much hospitals are fined based on bed count</strong></a></p></li><li><p><a target="_self" rel="noopener noreferrer nofollow" class="editor-link" href="/legal/federal-enforcement-timeline-a-history-of-cms-warning-letters-and-the-shift-from-good-faith-to-strict-compliance"><strong>Federal Enforcement Timeline: A history of CMS warning letters and the shift from “Good Faith” to “Strict Compliance”</strong></a></p></li></ul><p>👉 <a target="_self" rel="noopener noreferrer nofollow" class="editor-link" href="/legal/hospital-price-transparency-legal-knowledge-hub"><strong>Go to the Legal Hub</strong></a></p><blockquote><p>“Good faith compliance ended when CMS learned how to compute the truth.”</p></blockquote><h2><strong>Technical Hub — The Data “Dictionary”</strong></h2><p><strong>Answers:</strong> <em>What does this data actually mean?</em></p><p>This hub defines the <strong>fields, codes, units, and file formats</strong> that CMS evaluates. It exists because most transparency failures are not legal—they are <strong>data-interpretation failures</strong>.</p><p>Includes:</p><ul><li><p><strong>The Master Glossary (CFO Edition)</strong></p></li><li><p><strong>What Is an NDC? (National Drug Code): Why scientific notation breaks drug pricing</strong></p></li><li><p><strong>Understanding IP vs OP Charges: Why inpatient and outpatient rates must be separated</strong></p></li><li><p><strong>The Machine-Readable Definition: Why a “pretty” PDF is illegal</strong></p></li><li><p><strong>Revenue Codes vs CPT Codes: Mapping departments to billing reality</strong></p></li></ul><p>👉 <strong>Go to the Technical Hub</strong></p><blockquote><p>“If two people interpret a field differently, CMS assumes it is wrong.”</p></blockquote><h2><strong>Failure Analysis Hub — The “CSV Trap”</strong></h2><p><strong>Answers:</strong> <em>Why are we failing audits even though we published a file?</em></p><p>This hub documents <strong>systemic, repeatable mistakes</strong> hospitals make—especially those caused by Excel exports, CSV handling, and contract abstractions. These are the errors CMS now detects automatically.</p><p>Includes:</p><ul><li><p><strong>The CSV Trap: Why Excel exports are the #1 cause of fines</strong></p></li><li><p><strong>Common Error: Scientific Notation and corrupted NPIs/NDCs</strong></p></li><li><p><strong>The Affirmation Statement Guide: How to properly sign a price file</strong></p></li><li><p><strong>Payer-Specific Negotiated Rates: Why gross charges are not enough</strong></p></li><li><p><strong>De-identified Min/Max Explained: Calculating price ranges correctly</strong></p></li></ul><p>👉 <strong>Go to the Failure Analysis Hub</strong></p><blockquote><p>“Most hospitals fail not because data is missing—but because it is silently corrupted.”</p></blockquote><h2><strong>Strategy &amp; Remediation Hub — The Yield Guard Solution</strong></h2><p><strong>Answers:</strong> <em>How do we fix this without betting the hospital on consultants?</em></p><p>This hub explains <strong>how compliance is operationalized</strong>, what CMS-grade audits actually test, and how hospitals can move from exposure to defensibility.</p><p>Includes:</p><ul><li><p><strong>Our 150-Point Audit Checklist</strong></p></li><li><p><strong>Case Study: St. Anne’s Audit and the ‘Danger Blanks’</strong></p></li><li><p><strong>Yield Guard vs Manual Auditing: Cost, time, and risk</strong></p></li><li><p><strong>The CFO’s 90-Day Compliance Roadmap</strong></p></li><li><p><strong>Security &amp; Data Privacy: Our No-PHI Promise</strong></p></li></ul><p>👉 <strong>Go to the Strategy &amp; Remediation Hub</strong></p><blockquote><p>“Transparency failures are governance failures, not web failures.”</p></blockquote><h2><strong>How to Use This Wiki</strong></h2><ul><li><p>Start with the <strong>Legal Hub</strong> if you need regulatory grounding</p></li><li><p>Use the <strong>Technical Hub</strong> to interpret files and fields</p></li><li><p>Use the <strong>Failure Analysis Hub</strong> to diagnose risk</p></li><li><p>Use the <strong>Strategy Hub</strong> to plan remediation and board updates</p></li></ul><p>Each page stands alone, but CMS enforcement does not. Neither should your understanding.</p><h2><strong>Why This Wiki Exists</strong></h2><p>Hospitals were given years to comply. CMS used that time to learn <strong>how hospitals obscure pricing</strong>—and how to detect it at scale.</p><p>This Wiki exists to document <strong>what CMS now enforces</strong>, not what hospitals hope will pass.</p><blockquote><p>“Hospital price transparency is no longer about disclosure. It is about proof.”</p></blockquote><p></p>
+    </article>
+
+            <div class="highlights flex flex-wrap px-0 my-10 md:-mx-3 md:my-20 md:px-0">
+                    </div>
+                                    </div>
+
+                                <footer class="border-t border-stone-200 py-9 text-sm dark:border-stone-800">
+    <div class="md:flex md:flex-wrap md:items-center">
+        <div class="w-full lg:flex-1 lg:w-auto">
+                            &copy; 2026 Yield Guard
+                    </div>
+
+        <div class="social__links">
+                    </div>
+    </div>
+
+    </footer>                            </div>
+                        </div>
+
+                                                    <div class="toc_container hidden pl-12 w-[300px] flex-none xl:flex xl:h-auto">
+                                <div class="fixed top-20 w-[252px] py-10 overflow-y-auto h-[calc(100%-5rem)] scrollbar-hide">
+                                    <div class="toc"></div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="search__overlay hidden fixed top-0 left-0 w-full h-screen z-50 backdrop-blur-sm bg-stone-200/80 dark:bg-stone-800/80">
+        <div class="max-w-2xl mx-auto py-10 md:py-20 p-5">
+            <div class="mb-5">
+                <span class="block w-5 h-5 cursor-pointer ml-auto mr-0" x-on:click="search.close();">
+                    <svg class="w-5 h-5 text-stone-800 dark:text-stone-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 14 14" height="14" width="14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m11.607142857142858 1.3928571428571428 -10.214285714285715 10.214285714285715" stroke-width="1"></path>
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m1.3928571428571428 1.3928571428571428 10.214285714285715 10.214285714285715" stroke-width="1"></path>
+                    </svg>
+                </span>
+            </div>
+
+            <div class="bg-white dark:bg-stone-950 rounded-lg">
+                <div id="searchbox"></div>
+
+                <div id="hits" class="border-t border-t-stone-200 dark:border-t-stone-800 max-h-[520px] overflow-y-auto"></div>
+            </div>
+        </div>
+    </div>
+
+    <div @click="$store.navIsOpen.toggle()" class="mobileNavBg hidden" :class="{'block! bg-stone-900/80 fixed top-0 left-0 w-full h-full z-40' : $store.navIsOpen.on}"></div>
+
+    
+    <link rel="preload" href="https://cdn.eniston.com/fonticons/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.eniston.com/fonticons/css/all.min.css"></noscript>
+
+<script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"zZlKu72d28ZJ4rH08yomEr3dWgpNqFjhKjBioeNy","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
+
+<script src="https://cdn.eniston.com/scripts/algolia/algoliasearch-lite.umd.js"></script>
+<script src="https://cdn.eniston.com/scripts/algolia/instantsearch.prod.min.js"></script>
+
+<script>
+    var search = {};
+    var BASE = BASE || {};
+    BASE.info = {
+        'identifier': "4aae519a-e2ee-47ae-8155-d3f3dd9c43a0",
+        'search_index': "articles-production",
+        'search_appid': "B6AA55TD7F",
+        'search_publickey': "NzgxMDIxMjUxMjMwMGNkMjMyNDEyMWM5MDBjZjIxYTgzNGNhY2VhZjQ1MGU1MWMyMjc3NGJmOGQxNjRiNTMxZGZpbHRlcnM9YmFzZV9pZCUzQSUyMjRhYWU1MTlhLWUyZWUtNDdhZS04MTU1LWQzZjNkZDljNDNhMCUyMg==",
+    }
+    BASE.translation = {
+        'search_placeholder': "Search articles ...",
+        'search_noresults': "No results found for"
+    }
+</script>
+
+<link rel="modulepreload" as="script" href="https://docs.yieldguard.health/build/assets/theme-docs-B-vUd57g.js" /><link rel="modulepreload" as="script" href="https://docs.yieldguard.health/build/assets/index-DMBS9SbZ.js" /><script type="module" src="https://docs.yieldguard.health/build/assets/theme-docs-B-vUd57g.js" data-navigate-track="reload"></script></body>
+</html>
