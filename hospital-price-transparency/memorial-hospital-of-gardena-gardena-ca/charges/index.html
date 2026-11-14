@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Charge-code catalog | Memorial Hospital Of Gardena | YieldGuard</title>
+<style>
+.az{columns:4;column-gap:32px;font-size:.88rem;margin-top:12px}
+.az a{display:block;padding:2px 0;color:#1A2B44;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.az a:hover{color:#BE0000}
+@media(max-width:820px){.az{columns:2}}
+.dirtools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:18px 0 8px}
+.dirtools input[type=search]{flex:1 1 320px;padding:13px 14px;border:1px solid #cbd5e1;border-radius:10px;font:inherit;font-size:16px}
+.dirtools select{padding:13px 14px;border:1px solid #cbd5e1;border-radius:10px;font:inherit;background:#fff}
+.dirtools input:focus,.dirtools select:focus{outline:2px solid #BE0000;border-color:#BE0000}
+.dircount{color:#64748b;font-size:.9rem;margin:4px 0 12px}
+table.dirtable{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;display:block;overflow-x:auto}
+table.dirtable thead{display:table;width:100%;table-layout:fixed}
+table.dirtable tbody{display:table;width:100%;table-layout:fixed}
+table.dirtable th{text-align:left;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:#64748b;padding:12px 14px;border-bottom:2px solid #e5e7eb;background:#f8fafc}
+table.dirtable td{padding:10px 14px;border-bottom:1px solid #f1f5f9;font-size:.95rem;vertical-align:middle}
+table.dirtable tr:hover td{background:#f8fafc}
+td.hname a{font-weight:600;color:#1A2B44}td.hname a:hover{color:#BE0000}
+.hicons{display:inline-flex;gap:6px}.hico{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;border:1px solid #e5e7eb;color:#475569;background:#fff}
+.hico:hover{color:#BE0000;border-color:#BE0000;text-decoration:none}
+.dirprofile{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;justify-content:space-between}
+.dirprofile .facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:10px}
+.dirprofile .fact span{display:block;font-size:.72rem;letter-spacing:.1em;font-weight:700;color:#64748b;text-transform:uppercase}
+.dirprofile .fact b{font-size:1.15rem;color:#1A2B44}
+.footlink{font-size:.85rem;color:#64748b;margin-top:28px}
+.st-inline{display:none}
+@media(max-width:820px){table.dirtable th,table.dirtable td{padding:8px 10px;font-size:.88rem}.hide-sm{display:none}.hico{width:28px;height:28px}.hicons{gap:4px;flex-wrap:wrap}.st-inline{display:inline;color:#64748b}}
+details.method{margin-top:16px}details.method summary{cursor:pointer;color:#BE0000;font-size:.85rem}details.method .card{margin-top:10px}
+</style>
+<link rel="stylesheet" href="/style.css"></head><body>
+<header class="top"><div class="bar"><a class="logo" href="/">YieldGuard</a>
+<input type="checkbox" id="mt" class="mt"><label for="mt" class="burger" aria-label="Menu"><span></span><span></span><span></span></label>
+<nav><a href="/features">Product</a><a href="/pricing">Pricing</a><a href="/about">About</a><a href="/careers">Careers</a><a href="/mrf-compliance-glossary">Glossary</a><a href="/learn/">Learn</a><a class="btn" href="/contact">Request Compliance Assessment</a></nav></div></header>
+<main><section class="plain"><div class="wrap"><p class="eyebrow">HOSPITAL CHARGE-CODE CATALOG</p><h1>Memorial Hospital Of Gardena</h1><p>51,361 distinct hospital item descriptions with codes, care setting and drug units. Identical entries across these six public fields are consolidated, not sampled. Raw prices, payer and plan names, formulas, allowed amounts and notes remain internal.</p>
+<div class="card"><h2>What this catalog does not tell you</h2><p>Separately billed independent clinicians, such as surgeons, anesthesiologists or radiologists, may charge additional fees. Hospital standard-charge information includes hospital-established charges and services of employed physicians and non-physician practitioners; it is not necessarily a complete bill for an episode of care.</p><p>A hospital negotiated or allowed rate is not your personal out-of-pocket cost. What you owe depends on your plan, covered services, network, deductible already met, copay or coinsurance, and out-of-pocket maximum. Ask the hospital and your insurer for a personalized estimate.</p></div>
+<p><a href="catalog.csv" download>Download public CSV</a> · <a href="catalog.json" download>Download public JSON</a> · <a href="../">Hospital detail page</a></p>
+<form id="search"><label for="q">Search descriptions, codes or care setting</label><br><input id="q" type="search" style="min-width:60%;padding:12px"><button class="btn" type="submit">Search all items</button><button type="button" id="clear" class="btn">Clear</button></form><p id="status" aria-live="polite"></p><div style="overflow-x:auto"><table class="dirtable"><thead><tr><th>Description</th><th>Code / type pairs</th><th>Setting</th><th>Drug quantity / unit</th></tr></thead><tbody id="rows"></tbody></table></div><p><button id="prev">Previous 100</button> <button id="next">Next 100</button></p><noscript><p>Use the complete CSV or JSON download above to inspect every catalog entry without JavaScript.</p></noscript><div style="margin-top:28px"><h3>Sources and limits</h3><p class="note">Extracted from the hospital's MRF on 2026-11-14, declared file date 2026-02-04. Descriptions are source billing terms, not treatment recommendations. Drug quantity is the source charge unit, not a prescribed dose. A catalog item does not guarantee that a service is currently available at a particular location.</p><p class="note">Consumer scope: <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-E/part-180">45 CFR Part 180</a>; <a href="https://www.healthcare.gov/glossary/allowed-amount/">allowed amounts</a>; <a href="https://www.healthcare.gov/glossary/out-of-pocket-maximum-limit/">out-of-pocket limits</a>. Direct MRF links remain internal.</p></div></div></section></main>
+<footer><div class="wrap"><p class="logo">YieldGuard</p><p>The leading price transparency compliance and revenue cycle intelligence platform for hospitals and health systems.</p>
+<div class="cols"><div><h4>Product</h4><a href="/features">Platform Capabilities</a><a href="/pricing">Pricing</a><a href="/mandate-tracker">Mandate Tracker (Beta)</a></div>
+<div><h4>Resources</h4><a href="/mrf-compliance-glossary">Resource Library</a><a href="/mrf-compliance-glossary">Regulatory Methodology</a><a href="https://docs.yieldguard.health">Documentation</a></div>
+<div><h4>Company</h4><a href="/about">About Us</a><a href="/careers">Careers</a><a href="mailto:support@yieldguard.com">Support</a><a href="/contact">Contact</a><a href="/mrf-compliance-glossary">MRF &amp; Compliance Glossary</a><a href="/learn/">Learn</a><a href="https://www.linkedin.com/company/yieldguardhealth/" rel="noopener" target="_blank">LinkedIn</a></div>
+<div class="newsletter"><h4>Weekly newsletter</h4><p>Hospital price transparency for CFOs and compliance teams, sourced to CMS. <a href="https://yieldguardhealth.substack.com" rel="noopener" target="_blank">YieldGuard Weekly</a></p><iframe src="https://yieldguardhealth.substack.com/embed" title="Subscribe to YieldGuard Weekly" width="480" height="150" style="border:0;background:#fff;border-radius:8px;max-width:100%" frameborder="0" scrolling="no" loading="lazy"></iframe></div></div>
+<p class="small">&copy; 2026 YieldGuard. All rights reserved.</p></div></footer></body></html>
+<script>
+const total=51361, pageSize=100, cache=new Map(); let page=0, filtered=null, all=null;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function show(){const n=filtered?filtered.length:total,start=page*pageSize;let rs;if(filtered)rs=filtered.slice(start,start+pageSize);else{const p=Math.floor(start/1000);if(!cache.has(p)){const r=await fetch('part-'+p+'.json');if(!r.ok)throw Error('Catalog could not load');cache.set(p,await r.json());}rs=cache.get(p).slice(start%1000,start%1000+pageSize);}document.getElementById('rows').innerHTML=rs.map(r=>'<tr><td>'+esc(r.description)+'</td><td>'+r.code.map((c,i)=>esc(c)+' <small>('+esc(r.type[i])+')</small>').join('<br>')+'</td><td>'+esc(r.setting)+'</td><td>'+esc(r.drug_unit_of_measurement)+' '+esc(r.drug_type_of_measurement)+'</td></tr>').join('');document.getElementById('status').textContent=n?('Showing '+(start+1)+'-'+Math.min(start+100,n)+' of '+n.toLocaleString()+' items'):'No matches';document.getElementById('prev').disabled=page===0;document.getElementById('next').disabled=start+100>=n;}
+function fail(e){document.getElementById('status').textContent=e.message+'. Use the CSV or JSON download.';}
+document.getElementById('search').onsubmit=async e=>{e.preventDefault();const q=document.getElementById('q').value.trim().toLowerCase();document.getElementById('status').textContent='Searching the full hospital catalog...';try{if(!all){const r=await fetch('catalog.json');if(!r.ok)throw Error('Search could not load');all=(await r.json()).rows;}filtered=q?all.filter(r=>r.description.toLowerCase().includes(q)||r.code.some(c=>c.toLowerCase().includes(q))||r.setting.toLowerCase().includes(q)):null;page=0;await show();}catch(e){fail(e);}};
+document.getElementById('clear').onclick=()=>{filtered=null;page=0;document.getElementById('q').value='';show().catch(fail);};document.getElementById('prev').onclick=()=>{page--;show().catch(fail);};document.getElementById('next').onclick=()=>{page++;show().catch(fail);};show().catch(fail);
+</script>
