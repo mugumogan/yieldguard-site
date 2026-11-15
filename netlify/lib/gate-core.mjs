@@ -13,7 +13,7 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
    const id=url.searchParams.get('hospital');
    if(!id || !(data.hospitals||{})[id])return json({error:'A hospital-specific issue review is not available here yet.'},404);
    // Nov15 provenance hold: do not serve or collect requests for these reviews.
-   if(new Set(['547']).has(id))return json({error:'Review temporarily unavailable while source verification is completed.',held:true},503);
+   // All four held targets independently recovered November 15; provisional peer filter remains.
    const hospital={...data.hospitals[id]};
    // Shodair restored only after Nov15 authenticated browser capture and independent recount.
    if(id==='2914'){
@@ -32,6 +32,12 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
     hospital.issues=[{title:'Review zero count with populated median allowed amount',summary:'In the source retrieved November 15, 2026, 414,025 of 653,274 applicable payer-plan entries encode Count of Allowed Amounts as 0 while a median allowed amount is populated on the same entries.'}];
     hospital.peerContext='';
     hospital.evidence="Authenticated browser download reached through Baptist Health's official Lexington machine-readable-file link, retrieved November 15, 2026. File-declared update: 2026-09-28. Applicable entries have a populated negotiated percentage or algorithm field. The numerator has count exactly 0 and a populated median, with blank 10th-percentile and 90th-percentile fields. The 1,919 zero-count entries with all three statistics blank and an explanation note are excluded from that numerator. These are encoded payer-plan entries, not patients, claims, payments or unique services. Only the hospital can reconcile these fields with its remittance records. This is a field-level review, not a CMS compliance determination, payment-error finding or claim that correction is required. Later source replacements may differ.";
+   }
+   // Delano target restored from authenticated Nov15 bytes and recount; no peer or equality expansion.
+   if(id==='547'){
+    hospital.issues=[{title:'Review zero count with populated median allowed amount',summary:'In the source retrieved November 15, 2026, 212,603 of 234,953 applicable payer-plan entries encode Count of Allowed Amounts as 0 while a median allowed amount is populated on the same entries.'}];
+    hospital.peerContext='';
+    hospital.evidence="Authenticated browser download reached through Adventist Health's official Delano machine-readable-file link, retrieved November 15, 2026. File-declared update: 2026-07-29. Applicable entries have a populated negotiated percentage or algorithm field. The numerator has count exactly 0 and a populated median, with blank 10th-percentile and 90th-percentile fields. The 521 zero-count entries with all three statistics blank and an explanation note are excluded from that numerator. These are encoded payer-plan entries, not patients, claims, payments or unique services. Only the hospital can reconcile these fields with its remittance records. This is a field-level review, not a CMS compliance determination, payment-error finding or claim that correction is required. Later source replacements may differ.";
    }
    // Preserve supported target findings, but suppress provisional peer evidence.
    if(/Bingham|Major Hospital|Decatur County Memorial/i.test(hospital.peerContext||''))hospital.peerContext='';
