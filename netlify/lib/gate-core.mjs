@@ -12,7 +12,11 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
    if(data.encoding==='deflate-base64')data=JSON.parse(inflateRawSync(Buffer.from(data.payload,'base64')).toString('utf8'));
    const id=url.searchParams.get('hospital');
    if(!id || !(data.hospitals||{})[id])return json({error:'A hospital-specific issue review is not available here yet.'},404);
-   const hospital=data.hospitals[id];
+   // Nov15 provenance hold: do not serve or collect requests for these reviews.
+   if(new Set(['547','1583','1949','2914']).has(id))return json({error:'Review temporarily unavailable while source verification is completed.',held:true},503);
+   const hospital={...data.hospitals[id]};
+   // Preserve supported target findings, but suppress provisional peer evidence.
+   if(/Bingham|Major Hospital|Decatur County Memorial/i.test(hospital.peerContext||''))hospital.peerContext='';
    const report={page:hospital.page,issues:hospital.issues||data.issues,explanation:hospital.explanation||'',review:hospital.review||'',peerContext:hospital.peerContext||'',evidence:hospital.evidence||(data.evidence+(hospital.scope?' '+hospital.scope:''))};
    const store=getStore({name:'yg-issue-access',consistency:'strong'}),leads=getStore({name:'yg-newsletter-consent',consistency:'strong'});
    const cookie=request.headers.get('cookie')||'';
