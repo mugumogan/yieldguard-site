@@ -13,8 +13,14 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
    const id=url.searchParams.get('hospital');
    if(!id || !(data.hospitals||{})[id])return json({error:'A hospital-specific issue review is not available here yet.'},404);
    // Nov15 provenance hold: do not serve or collect requests for these reviews.
-   if(new Set(['547','1583','1949','2914']).has(id))return json({error:'Review temporarily unavailable while source verification is completed.',held:true},503);
+   if(new Set(['547','1583','1949']).has(id))return json({error:'Review temporarily unavailable while source verification is completed.',held:true},503);
    const hospital={...data.hospitals[id]};
+   // Shodair restored only after Nov15 authenticated browser capture and independent recount.
+   if(id==='2914'){
+    hospital.issues=[{title:'Review zero count with populated median allowed amount',summary:'In the source retrieved November 15, 2026, 81 of 81 applicable payer-plan entries encode Count of Allowed Amounts as 0 while a median allowed amount is populated on the same entries.'}];
+    hospital.peerContext='';
+    hospital.evidence="The source file identifies Montana Childrens Home & Hospital, reached through Shodair's pricing-transparency page. Authenticated browser download retrieved November 15, 2026; file-declared update: 2026-03-10. Applicable entries have a populated negotiated percentage or algorithm field; all 81 reviewed applicable entries have count exactly 0 and a populated median. These are encoded payer-plan entries, not patients, claims, payments or unique services. Only the hospital can reconcile these fields with its remittance records. This is a field-level review, not a CMS compliance determination, payment-error finding or claim that correction is required. Later source replacements may differ.";
+   }
    // Preserve supported target findings, but suppress provisional peer evidence.
    if(/Bingham|Major Hospital|Decatur County Memorial/i.test(hospital.peerContext||''))hospital.peerContext='';
    const report={page:hospital.page,issues:hospital.issues||data.issues,explanation:hospital.explanation||'',review:hospital.review||'',peerContext:hospital.peerContext||'',evidence:hospital.evidence||(data.evidence+(hospital.scope?' '+hospital.scope:''))};
