@@ -1,4 +1,5 @@
 import { createHash, randomBytes } from 'node:crypto';
+import { inflateRawSync } from 'node:zlib';
 const hash = value => createHash('sha256').update(value).digest('hex');
 const headers = {'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store, private','X-Content-Type-Options':'nosniff','Vary':'Cookie, Origin'};
 const json = (data,status=200,extra={}) => new Response(JSON.stringify(data),{status,headers:{...headers,...extra}});
@@ -7,11 +8,12 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
  return async request => {
   try {
    const url=new URL(request.url), site=url.origin;
-   const data=JSON.parse(env.YG_ISSUE_DATA||'{}');
+   let data=JSON.parse(env.YG_ISSUE_DATA||'{}');
+   if(data.encoding==='deflate-base64')data=JSON.parse(inflateRawSync(Buffer.from(data.payload,'base64')).toString('utf8'));
    const id=url.searchParams.get('hospital');
    if(!id || !(data.hospitals||{})[id])return json({error:'A hospital-specific issue review is not available here yet.'},404);
    const hospital=data.hospitals[id];
-   const report={page:hospital.page,issues:data.issues,evidence:data.evidence+(hospital.scope?' '+hospital.scope:'')};
+   const report={page:hospital.page,issues:hospital.issues||data.issues,explanation:hospital.explanation||'',review:hospital.review||'',peerContext:hospital.peerContext||'',evidence:hospital.evidence||(data.evidence+(hospital.scope?' '+hospital.scope:''))};
    const store=getStore({name:'yg-issue-access',consistency:'strong'}),leads=getStore({name:'yg-newsletter-consent',consistency:'strong'});
    const cookie=request.headers.get('cookie')||'';
    const match=cookie.match(/(?:^|;\s*)yg_issues=([a-f0-9]{64})(?:;|$)/);
@@ -43,7 +45,10 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
    const event={at:new Date(now).toISOString(),hospital:id,page:report.page,consent:form.consent,testOnly,consentVersion:'2026-11-14-v2-optional',consentText};
    const lead={...previous,email,status,importEligible:form.consent&&!testOnly,createdAt:previous?.createdAt||event.at,updatedAt:event.at,events:[...(previous?.events||[]).slice(-19),event]};
    // Access is never granted until the private consent record has been persisted.
-   await getStore({name:'yg-report-requests',consistency:'strong'}).setJSON(leadKey,{...lead,status:form.consent?'newsletter_opt_in':'report_only'});
+   const reports=getStore({name:'yg-report-requests',consistency:'strong'});
+   await reports.setJSON(leadKey,{...lead,status:form.consent?'newsletter_opt_in':'report_only'});
+   const submissionId=hash(email+'|'+event.at+'|'+id+'|'+randomBytes(16).toString('hex'));
+   await reports.setJSON('submissions/'+submissionId,{submissionId,email,...event,importEligible:form.consent&&!testOnly,newsletterStatus:status});
    if(form.consent)await leads.setJSON(leadKey,lead);
    const token=random(),expiresAt=now+86400000;
    await store.setJSON('sessions/'+hash(token),{hospital:id,leadKey:form.consent?leadKey:null,newsletterConsent:form.consent,expiresAt});

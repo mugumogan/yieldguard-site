@@ -15,8 +15,11 @@
   para(output,status,'p').className='yg-status';
   const list=document.createElement('ol');list.className='yg-findings';
   data.report.issues.slice(0,10).forEach(issue=>{const li=document.createElement('li');para(li,issue.title,'h3');para(li,issue.summary);list.append(li)});output.append(list);
+  if(data.report.explanation){para(output,'CMS encoding guidance','h3');para(output,data.report.explanation)}
+  if(data.report.review){para(output,'Suggested review','h3');para(output,data.report.review)}
+  if(data.report.peerContext){para(output,'Nearby comparison','h3');para(output,data.report.peerContext)}
   const notes=document.querySelector('#sources-and-notes');
-  if(notes){let evidence=notes.querySelector('.yg-issue-evidence');if(!evidence){evidence=document.createElement('div');evidence.className='yg-issue-evidence';notes.append(evidence)}evidence.replaceChildren();para(evidence,'Issue review evidence','h3');para(evidence,data.report.evidence);const a=document.createElement('a');a.href='https://www.cms.gov/files/document/hospital-price-transparency-frequently-asked-questions.pdf';a.textContent='CMS Hospital Price Transparency FAQ';a.target='_blank';a.rel='noopener';evidence.append(a)}
+  if(notes){let evidence=notes.querySelector('.yg-issue-evidence');if(!evidence){evidence=document.createElement('div');evidence.className='yg-issue-evidence';notes.append(evidence)}evidence.replaceChildren();para(evidence,'Issue review evidence','h3');para(evidence,data.report.evidence);const a=document.createElement('a');a.href='https://www.cms.gov/files/document/hospital-price-transparency-frequently-asked-questions.pdf';a.textContent='CMS Hospital Price Transparency FAQ';a.target='_blank';a.rel='noopener';evidence.append(a);const c=document.createElement('a');c.href='https://raw.githubusercontent.com/CMSgov/hospital-price-transparency/master/documentation/CSV/README.md';c.textContent='CMS CSV documentation';c.target='_blank';c.rel='noopener';para(evidence,'');evidence.append(c)}
   open.hidden=true;dialog?.close();output.hidden=false;
  }
  open?.addEventListener('click',()=>{dialog.showModal();form.querySelector('input[type=email]').focus()});

@@ -22,6 +22,11 @@ export default async request=>{
    }
   }
   if(!auth||auth.expiresAt<Date.now())return reply({error:'Sign in to view the private queue.'},401);
+  if(request.method==='GET'&&url.searchParams.get('view')==='reports'){
+   const reports=getStore({name:'yg-report-requests',consistency:'strong'}),records=[],submissions=[];
+   for await(const page of reports.list({paginate:true})){for(const blob of page.blobs){const rec=await reports.get(blob.key,{type:'json'});if(rec)(blob.key.startsWith('submissions/')?submissions:records).push({key:blob.key,...rec})}}
+   return reply({records,submissions});
+  }
   if(request.method==='GET'){
    const output=[];for await(const page of leads.list({prefix:'leads/',paginate:true})){for(const blob of page.blobs){const record=await leads.get(blob.key,{type:'json'});if(record){if(record.status==='queued'&&record.importEligible!==true){record.status='import-held';await leads.setJSON(blob.key,record)}output.push({key:blob.key,...record})}}}
    return reply({records:output});
