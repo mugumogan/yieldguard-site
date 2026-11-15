@@ -9,6 +9,7 @@
   if(!data?.report?.issues?.length)return;
   output.replaceChildren();
   let status='Your issue summary is ready. Your weekly newsletter signup is queued for processing.';
+  if(data.newsletterStatus==='not_requested')status='Your issue summary is ready. You have not been added to the weekly newsletter.';
   if(data.newsletterStatus==='subscribed')status='Your issue summary is ready. Your weekly newsletter signup has been processed.';
   if(data.newsletterStatus==='unsubscribed')status='Your issue summary is ready. To rejoin YieldGuard Weekly after unsubscribing, use the newsletter Subscribe link below.';
   para(output,status,'p').className='yg-status';

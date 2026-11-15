@@ -19,8 +19,8 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
     if(!match)return json({locked:true},401);
     const session=await store.get('sessions/'+hash(match[1]),{type:'json'});
     if(!session||session.expiresAt<clock()||session.hospital!==id)return json({locked:true},401);
-    const lead=await leads.get(session.leadKey,{type:'json'});
-    return json({report,newsletterStatus:lead?.status||'queued'});
+    const lead=session.leadKey?await leads.get(session.leadKey,{type:'json'}):null;
+    return json({report,newsletterStatus:session.newsletterConsent===false?'not_requested':lead?.status||'queued'});
    }
    if(request.method!=='POST')return json({error:'Method not allowed'},405,{'Allow':'GET, POST'});
    const origin=request.headers.get('origin');
@@ -30,7 +30,7 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
    let form;try{form=JSON.parse(body)}catch{return json({error:'Invalid form.'},400)}
    const email=String(form.email||'').trim().toLowerCase();
    if(form.website)return json({error:'Please refresh the page and try again.'},400);
-   if(!validEmail(email)||form.consent!==true)return json({error:'Enter a valid email and select the weekly newsletter signup box.'},400);
+   if(!validEmail(email)||typeof form.consent!=='boolean')return json({error:'Enter a valid email.'},400);
    const now=clock(),day=new Date(now).toISOString().slice(0,10);
    const ip=request.headers.get('x-nf-client-connection-ip')||'unknown';
    const rateKey='rate/'+day+'/'+hash(ip),rate=await store.get(rateKey,{type:'json'});
@@ -39,13 +39,14 @@ export function makeHandler({getStore,env=process.env,clock=()=>Date.now(),rando
    const leadKey='leads/'+hash(email),previous=await leads.get(leadKey,{type:'json'});
    const consentText='Email me YieldGuard Weekly, with hospital price-transparency research and updates. I can unsubscribe at any time.';
    const testOnly=email.endsWith('@example.invalid');
-   const status=testOnly?'test':previous?.status||'queued';
-   const event={at:new Date(now).toISOString(),hospital:id,page:report.page,consent:true,testOnly,consentVersion:'2026-11-14-v1',consentText};
-   const lead={email,status,createdAt:previous?.createdAt||event.at,updatedAt:event.at,events:[...(previous?.events||[]).slice(-19),event]};
+   const status=form.consent?(testOnly?'test':previous?.status==='import-held'?'queued':previous?.status||'queued'):'not_requested';
+   const event={at:new Date(now).toISOString(),hospital:id,page:report.page,consent:form.consent,testOnly,consentVersion:'2026-11-14-v2-optional',consentText};
+   const lead={...previous,email,status,importEligible:form.consent&&!testOnly,createdAt:previous?.createdAt||event.at,updatedAt:event.at,events:[...(previous?.events||[]).slice(-19),event]};
    // Access is never granted until the private consent record has been persisted.
-   await leads.setJSON(leadKey,lead);
+   await getStore({name:'yg-report-requests',consistency:'strong'}).setJSON(leadKey,{...lead,status:form.consent?'newsletter_opt_in':'report_only'});
+   if(form.consent)await leads.setJSON(leadKey,lead);
    const token=random(),expiresAt=now+86400000;
-   await store.setJSON('sessions/'+hash(token),{hospital:id,leadKey,expiresAt});
+   await store.setJSON('sessions/'+hash(token),{hospital:id,leadKey:form.consent?leadKey:null,newsletterConsent:form.consent,expiresAt});
    return json({report,newsletterStatus:status},200,{'Set-Cookie':`yg_issues=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=86400`});
   }catch{return json({error:'We could not save your signup. Your email has not been confirmed for newsletter processing. Please try again later.'},503)}
  }

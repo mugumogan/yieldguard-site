@@ -23,11 +23,11 @@ export default async request=>{
   }
   if(!auth||auth.expiresAt<Date.now())return reply({error:'Sign in to view the private queue.'},401);
   if(request.method==='GET'){
-   const output=[];for await(const page of leads.list({prefix:'leads/',paginate:true})){for(const blob of page.blobs){const record=await leads.get(blob.key,{type:'json'});if(record)output.push({key:blob.key,...record})}}
+   const output=[];for await(const page of leads.list({prefix:'leads/',paginate:true})){for(const blob of page.blobs){const record=await leads.get(blob.key,{type:'json'});if(record){if(record.status==='queued'&&record.importEligible!==true){record.status='import-held';await leads.setJSON(blob.key,record)}output.push({key:blob.key,...record})}}}
    return reply({records:output});
   }
   if(request.method==='POST'&&body.action==='status'){
-   if(!/^leads\/[a-f0-9]{64}$/.test(body.key||'')||!['queued','subscribed','unsubscribed','skipped','test'].includes(body.status))return reply({error:'Invalid queue update.'},400);
+   if(!/^leads\/[a-f0-9]{64}$/.test(body.key||'')||!['queued','subscribed','unsubscribed','skipped','test','import-held'].includes(body.status))return reply({error:'Invalid queue update.'},400);
    const record=await leads.get(body.key,{type:'json'});if(!record)return reply({error:'Record not found.'},404);
    record.status=body.status;record.processedAt=new Date().toISOString();record.processingNote=String(body.note||'').slice(0,500);await leads.setJSON(body.key,record);return reply({ok:true});
   }
