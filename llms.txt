@@ -15,3 +15,5 @@
 - [How to check your hospital machine-readable file](https://yieldguard.health/learn/how-to-check-your-hospital-mrf): Sourced to CMS, reviewed October 5, 2026.
 - [The 2026 machine-readable file gap types](https://yieldguard.health/learn/mrf-gap-types-2026): Sourced to CMS, reviewed October 5, 2026.
 - [Hospital file dissections](https://yieldguard.health/learn/hospital-file-dissections/): 179 de-identified source-file reviews from stored CY2026 audits, published November 13, 2026.
+
+- [Count files and findings separately](https://yieldguard.health/learn/count-files-and-findings-separately/): Distinguish 179 unique source files from 183 finding records in the historical October 2026 inventory.
