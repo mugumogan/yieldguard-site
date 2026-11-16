@@ -1,0 +1,33 @@
+(() => {
+'use strict';
+const NS='http://www.w3.org/2000/svg';
+const make=(tag,attrs={},text)=>{const e=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(text!==undefined)e.textContent=text;return e};
+const svg=(tag,attrs={},text)=>{const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(text!==undefined)e.textContent=text;return e};
+const val=s=>{s=s.trim();if(!s)return null;const n=Number(s.replace(/[$,%\s]/g,''));return Number.isFinite(n)?n:null};
+const full=(v,pct)=>pct?v.toLocaleString('en-US',{minimumFractionDigits:1,maximumFractionDigits:1})+'%':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
+const short=(v,pct)=>pct?+v.toFixed(1)+'%':(v<0?'−':'')+'$'+new Intl.NumberFormat('en-US',{notation:'compact',maximumFractionDigits:1}).format(Math.abs(v));
+document.querySelectorAll('.yg-nashp').forEach(section=>{
+const details=[...section.querySelectorAll('details')].find(x=>x.querySelector('summary')?.textContent.startsWith('Financial history'));
+if(!details)return;
+const rows=[...details.querySelectorAll('tbody tr')].map(tr=>[...tr.querySelectorAll('td')].map(td=>td.textContent.trim()));
+const data=rows.filter(r=>/^\d{4}/.test(r[0])).map(r=>({year:Number(r[0].slice(0,4)),label:r[0],v:r.slice(1).map(val)}));
+const metrics=['Net patient revenue','Net income (loss)','Net margin','Patient-care operating margin'];
+const available=metrics.map((name,i)=>({name,i})).filter(m=>data.filter(d=>d.v[m.i]!==null).length>=2);if(!available.length)return;
+const box=make('div',{class:'yg-chart'}),top=make('div',{class:'yg-chart-top'}),label=make('label',{},'Financial history'),select=make('select',{'aria-label':'Financial history metric'});available.forEach(m=>select.append(make('option',{value:m.i},m.name)));label.append(select);top.append(label);
+const ranges=make('div',{class:'yg-chart-ranges','aria-label':'History range',role:'group'});let range=0,metric=available[0].i,active=-1;
+const buttons=[['5Y',5],['All',0]].map(([t,n])=>{const button=make('button',{type:'button','aria-pressed':String(n===0)},t);button.onclick=()=>{range=n;buttons.forEach(([b,v])=>b.setAttribute('aria-pressed',String(v===range)));draw()};ranges.append(button);return[button,n]});top.append(ranges);box.append(top);
+const readout=make('div',{class:'yg-chart-readout','aria-live':'polite','aria-atomic':'true'}),value=make('strong'),year=make('span');readout.append(value,year);box.append(readout);
+const canvas=svg('svg',{viewBox:'0 0 680 280',role:'img','aria-label':'Financial history trend'}),wrap=make('div',{class:'yg-chart-canvas',tabindex:'0',role:'group','aria-label':'Interactive financial trend. Use left and right arrow keys to inspect years.'});wrap.append(canvas);box.append(wrap);
+const hint=make('p',{class:'yg-chart-hint'},'Tap or move over the line to inspect a fiscal year. Exact values remain in the table below.');box.append(hint);details.before(box);
+let points=[],guide,dot,W=680;
+function inspect(i){if(!points.length)return;i=Math.max(0,Math.min(i,points.length-1));active=i;const d=points[i];value.textContent=full(d.v[metric],metric>=2);year.textContent='Fiscal year '+d.label;guide.setAttribute('x1',d.x);guide.setAttribute('x2',d.x);dot.setAttribute('cx',d.x);dot.setAttribute('cy',d.y);canvas.setAttribute('aria-label',metrics[metric]+', fiscal year '+d.label+': '+full(d.v[metric],metric>=2));}
+function draw(){W=Math.max(260,Math.round(wrap.clientWidth));canvas.setAttribute('viewBox','0 0 '+W+' 280');canvas.replaceChildren();const last=Math.max(...data.map(d=>d.year));const ds=data.filter(d=>!range||d.year>last-range);const ys=ds.filter(d=>d.v[metric]!==null).map(d=>d.v[metric]);if(!ys.length){value.textContent='No reported values';year.textContent='In this range';points=[];return}let low=Math.min(...ys),high=Math.max(...ys),pad=(high-low||Math.abs(high)*.1||1)*.13;low-=pad;high+=pad;const left=76,right=W-18,top=16,bottom=238,xmin=Math.min(...ds.map(d=>d.year)),xmax=Math.max(...ds.map(d=>d.year));const X=y=>left+(y-xmin)/(xmax-xmin||1)*(right-left),Y=v=>bottom-(v-low)/(high-low)*(bottom-top);
+for(let i=0;i<4;i++){const y=top+i*(bottom-top)/3,v=high-i*(high-low)/3;canvas.append(svg('line',{x1:left,x2:right,y1:y,y2:y,stroke:'#e4eaf1'}),svg('text',{x:left-10,y:y+4,'text-anchor':'end',class:'yg-chart-axis'},short(v,metric>=2)))}
+if(low<0&&high>0)canvas.append(svg('line',{x1:left,x2:right,y1:Y(0),y2:Y(0),stroke:'#9daec1','stroke-dasharray':'4 4'}));
+const labels=[xmin,...(xmax-xmin>4?[Math.round((xmin+xmax)/2)]:[]),xmax];[...new Set(labels)].forEach(y=>canvas.append(svg('text',{x:X(y),y:266,'text-anchor':y===xmin?'start':y===xmax?'end':'middle',class:'yg-chart-axis'},y)));
+let path='',prev=null;points=[];ds.forEach(d=>{if(d.v[metric]===null){prev=null;return}const p={...d,x:X(d.year),y:Y(d.v[metric])};path+=(prev&&d.year===prev.year+1?'L':'M')+p.x+','+p.y;points.push(p);prev=d});canvas.append(svg('path',{d:path,fill:'none',stroke:'#2864c7','stroke-width':'2.6','stroke-linejoin':'round','stroke-linecap':'round'}));points.forEach(p=>canvas.append(svg('circle',{cx:p.x,cy:p.y,r:2.7,fill:'#2864c7'})));
+guide=svg('line',{x1:0,x2:0,y1:top,y2:bottom,stroke:'#90a6c4','stroke-dasharray':'3 3'});dot=svg('circle',{cx:0,cy:0,r:5,fill:'#2864c7',stroke:'white','stroke-width':2});canvas.append(guide,dot);inspect(points.length-1);hint.textContent='Tap or move over the line to inspect a fiscal year.';
+}
+function pointer(e){const rect=canvas.getBoundingClientRect(),x=(e.clientX-rect.left)*W/rect.width;if(points.length)inspect(points.reduce((best,p,i)=>Math.abs(p.x-x)<Math.abs(points[best].x-x)?i:best,0))}canvas.addEventListener('pointermove',pointer);canvas.addEventListener('pointerdown',pointer);wrap.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();inspect(active+(e.key==='ArrowLeft'?-1:1))}});window.addEventListener('resize',draw);select.onchange=()=>{metric=Number(select.value);draw()};draw();
+});
+})();
