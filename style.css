@@ -103,7 +103,7 @@ body:has(.dirprofile) .yg-chart svg line{stroke:#465972}
 @media(prefers-color-scheme:dark){body:has(.dirprofile) .fact b{color:#e5edf8}body:has(.dirprofile) .hico{background:#1a2738;border-color:#46576e}}
 /* Hospital section transitions: full-width rule and breathing room. */
 body:has(.dirprofile) main .plain .wrap h2{border-top:1px solid #d5deea;padding-top:28px;margin-top:42px;margin-bottom:22px;line-height:1.2}
-body:has(.dirprofile) main .plain .wrap section:has(>h2){margin-top:0!important}
+body:has(.dirprofile) main .plain .wrap section:has(>h2){margin-top:0!important;padding:0!important;border-top:0!important}
 body:has(.dirprofile) #sources-and-notes{border-top:0!important;padding-top:0!important}
 @media(max-width:640px){body:has(.dirprofile) main .plain .wrap h2{margin-top:34px;padding-top:24px;margin-bottom:20px}}
 @media(prefers-color-scheme:dark){body:has(.dirprofile) main .plain .wrap h2{border-top-color:#405067}}
