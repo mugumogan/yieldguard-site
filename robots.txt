@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://yieldguard.health/sitemap.xml
+
+Sitemap: https://yieldguard.health/sitemap-daily-2026-11-17.xml
