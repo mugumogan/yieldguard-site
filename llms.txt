@@ -17,3 +17,5 @@
 - [Hospital file dissections](https://yieldguard.health/learn/hospital-file-dissections/): 179 de-identified source-file reviews from stored CY2026 audits, published November 13, 2026.
 
 - [Count files and findings separately](https://yieldguard.health/learn/count-files-and-findings-separately/): Distinguish 179 unique source files from 183 finding records in the historical October 2026 inventory.
+
+- [A subset is not a second population](https://yieldguard.health/learn/a-subset-is-not-a-second-population/): Historical file #143 subset relationship; 1,159 unique affected entries, not 1,783.
