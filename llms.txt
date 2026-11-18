@@ -19,3 +19,5 @@
 - [Count files and findings separately](https://yieldguard.health/learn/count-files-and-findings-separately/): Distinguish 179 unique source files from 183 finding records in the historical October 2026 inventory.
 
 - [A subset is not a second population](https://yieldguard.health/learn/a-subset-is-not-a-second-population/): Historical file #143 subset relationship; 1,159 unique affected entries, not 1,783.
+
+- [An unknown denominator is not zero](https://yieldguard.health/learn/an-unknown-denominator-is-not-zero/): Historical file #116: 6,233 unique affected entries; applicable denominator not recorded, no share published.
