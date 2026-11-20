@@ -23,3 +23,5 @@
 - [An unknown denominator is not zero](https://yieldguard.health/learn/an-unknown-denominator-is-not-zero/): Historical file #116: 6,233 unique affected entries; applicable denominator not recorded, no share published.
 
 - [Show six entries without exaggerating the chart](https://yieldguard.health/learn/show-six-entries-without-exaggerating-the-chart/): Historical file #122: 6 of 48,741 applicable entries, 0.012% rounded; exact counts beside a true-scale chart.
+
+- [A payment-method note is not an absence explanation](https://yieldguard.health/learn/a-payment-method-note-is-not-an-absence-explanation/): Historical file #122: six entries with count zero and blank allowed-amount statistics; payment-method notes do not answer the missing-explanation finding.
