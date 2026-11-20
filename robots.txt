@@ -8,3 +8,4 @@ Sitemap: https://yieldguard.health/sitemap-daily-2026-11-17.xml
 Sitemap: https://yieldguard.health/sitemap-daily-2026-11-18.xml
 
 Sitemap: https://yieldguard.health/sitemap-daily-2026-11-19.xml
+Sitemap: https://yieldguard.health/sitemap-daily-2026-11-20.xml
