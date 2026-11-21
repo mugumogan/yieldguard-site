@@ -27,3 +27,5 @@
 - [A payment-method note is not an absence explanation](https://yieldguard.health/learn/a-payment-method-note-is-not-an-absence-explanation/): Historical file #122: six entries with count zero and blank allowed-amount statistics; payment-method notes do not answer the missing-explanation finding.
 
 - [25 price-file questions, answered](https://yieldguard.health/learn/25-price-file-questions.html): Matched cash-price evidence, Medicare service priorities, contract-review groups and release controls.
+
+- [Four price flags, not proof of errors](https://yieldguard.health/learn/four-price-flags-not-proof-of-errors/): A whole-file scan of 66 large-hospital price files and 52.9M rate rows; four review flags, not established errors.
